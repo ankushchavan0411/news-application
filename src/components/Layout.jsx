@@ -6,6 +6,7 @@
 import React from "react";
 import { Layout, Menu, Breadcrumb } from "antd";
 import Alert from "./Alert";
+import { footerText } from "../config";
 
 const { Header, Content, Footer } = Layout;
 
@@ -35,6 +36,6 @@ export default ({ children }) => (
         {children}
       </div>
     </Content>
-    <Footer style={{ textAlign: "center" }}>News Application © 2021</Footer>
+    <Footer style={{ textAlign: "center" }}>{footerText}</Footer>
   </Layout>
 );
