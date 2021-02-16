@@ -3,51 +3,50 @@
  * @description Here we have build news list component, it will return news
  */
 
-import React, { useEffect } from "react";
-import { List, Avatar } from "antd";
+import React, { useEffect, useState } from "react";
+import { List, Avatar, Tabs } from "antd";
 import { useSelector, useDispatch } from "react-redux";
 import { getNews } from "../redux/action";
+import { newsCategory } from "../config";
+
+const { TabPane } = Tabs;
 
 const NewsList = () => {
   const dispatch = useDispatch();
   const newsList = useSelector((state) => state.news.newsList);
-  const state = useSelector((state) => state);
-
-  console.log("state", state);
+  const [category, setCategory] = useState("business");
 
   useEffect(() => {
-    dispatch(getNews());
-  }, [getNews]);
-
-  const data = [
-    {
-      title: "Ant Design Title 1",
-    },
-    {
-      title: "Ant Design Title 2",
-    },
-    {
-      title: "Ant Design Title 3",
-    },
-  ];
+    dispatch(getNews({ category }));
+  }, [getNews, category]);
 
   return (
-    <List
-      itemLayout="horizontal"
-      dataSource={newsList}
-      pagination={newsList.length > 0 ? { pageSize: 5 } : false}
-      renderItem={(item) => (
-        <List.Item actions={[<a key="list-loadmore-more">view</a>]}>
-          <List.Item.Meta
-            avatar={
-              <Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
-            }
-            title={<a href="#">{item.title}</a>}
-            description="Ant Design, a design language for background applications, is refined by Ant UED Team"
+    <Tabs defaultActiveKey={category} onChange={(key) => setCategory(key)}>
+      {newsCategory.map((tab) => (
+        <TabPane tab={tab} key={tab}>
+          <List
+            itemLayout="horizontal"
+            dataSource={newsList}
+            pagination={newsList.length > 0 ? { pageSize: 4 } : false}
+            renderItem={(item) => (
+              <List.Item actions={[<a key="list-loadmore-more">view</a>]}>
+                <List.Item.Meta
+                  avatar={<Avatar src={item.urlToImage} alt="image" />}
+                  title={
+                    <a href={item.url} target="blank" className="title">
+                      {item.title}
+                    </a>
+                  }
+                  description={
+                    <em className="author">{item.author || "News Content"}</em>
+                  }
+                />
+              </List.Item>
+            )}
           />
-        </List.Item>
-      )}
-    />
+        </TabPane>
+      ))}
+    </Tabs>
   );
 };
 

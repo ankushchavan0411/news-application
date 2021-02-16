@@ -10,8 +10,20 @@
 .site-layout .site-layout-background {
   background: #fff;
 }
+.site-layout-background {
+  height: calc(100% - 60px) !important;
+  overflow: auto;
+}
 
 #root,
 .ant-layout {
   height: 100% !important;
+}
+
+.author {
+  text-transform: capitalize;
+}
+
+.title {
+  font-size: 1rem;
 }

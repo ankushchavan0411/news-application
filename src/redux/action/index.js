@@ -16,7 +16,10 @@ export const getNews = (payload) => {
       .getNews(payload)
       .then((res) => {
         dispatch({ type: actionTypes.LOADING_STOP });
-        dispatch({ type: actionTypes.GET_NEWS_SUCCESS, payload: res });
+        dispatch({
+          type: actionTypes.GET_NEWS_SUCCESS,
+          payload: res.data.articles,
+        });
       })
       .catch((err) => {
         dispatch({ type: actionTypes.LOADING_STOP });
