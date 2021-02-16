@@ -4,8 +4,9 @@
  */
 
 import React, { useEffect, useState } from "react";
-import { List, Avatar, Tabs } from "antd";
+import { List, Avatar, Tabs, Space } from "antd";
 import { useSelector, useDispatch } from "react-redux";
+import { EyeOutlined, FieldTimeOutlined } from "@ant-design/icons";
 import { getNews } from "../redux/action";
 import { newsCategory } from "../config";
 
@@ -18,7 +19,7 @@ const NewsList = () => {
 
   useEffect(() => {
     dispatch(getNews({ category }));
-  }, [getNews, category]);
+  }, [category]);
 
   return (
     <Tabs defaultActiveKey={category} onChange={(key) => setCategory(key)}>
@@ -29,7 +30,13 @@ const NewsList = () => {
             dataSource={newsList}
             pagination={newsList.length > 0 ? { pageSize: 4 } : false}
             renderItem={(item) => (
-              <List.Item actions={[<a key="list-loadmore-more">view</a>]}>
+              <List.Item
+                actions={[
+                  <a key="list-loadmore-more">
+                    <EyeOutlined style={{ fontSize: 21 }} />
+                  </a>,
+                ]}
+              >
                 <List.Item.Meta
                   avatar={<Avatar src={item.urlToImage} alt="image" />}
                   title={
@@ -38,7 +45,15 @@ const NewsList = () => {
                     </a>
                   }
                   description={
-                    <em className="author">{item.author || "News Content"}</em>
+                    <Space>
+                      <em className="author">
+                        {item.author || "News Content"}
+                      </em>
+                      <span>
+                        <FieldTimeOutlined />{" "}
+                        {new Date(item.publishedAt).toDateString()}
+                      </span>
+                    </Space>
                   }
                 />
               </List.Item>

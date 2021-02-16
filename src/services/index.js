@@ -1,6 +1,6 @@
 /**
  * @author Ankush Chavan
- * @description In this file we declare all apps services
+ * @description In this file we kept all app services
  */
 
 import api from "../axios";

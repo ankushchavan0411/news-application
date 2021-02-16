@@ -20,7 +20,8 @@
   height: 100% !important;
 }
 
-.author {
+.author,
+.ant-tabs-tab-btn {
   text-transform: capitalize;
 }
 
