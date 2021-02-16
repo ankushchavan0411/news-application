@@ -1,11 +1,14 @@
-import { api } from "../axios";
+/**
+ * @author Ankush Chavan
+ * @description In this file we declare all apps services
+ */
 
-// Set Base URL Here
-const baseUrl = process.env.REACT_APP_END_POINT;
+import api from "../axios";
+import { baseUrl } from "../config";
+import { topHeadlines } from "../lib/endPoint";
 
 /**
  * @param {*} payload
+ * @description Get News List Service
  */
-
-// Get News API
-export const getNews = (payload) => api(baseUrl).get("endpoint", payload);
+export const getNews = (payload) => api(baseUrl).get(topHeadlines, payload);

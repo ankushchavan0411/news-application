@@ -1,6 +1,17 @@
-import axios from "axios";
+/**
+ * @author Ankush Chavan
+ * @description Here we have create instance for axios
+ */
 
-const api = (baseUrl, header = {}) => {
+import axios from "axios";
+import { apiKey } from "../config";
+
+/**
+ * @description Here we have create axios instance
+ * @param {*} baseUrl
+ * @param {*} header
+ */
+const api = (baseUrl, header = { "x-api-key": apiKey }) => {
   const service = axios.create({
     timeout: 120000,
     baseURL: baseUrl,
@@ -10,6 +21,10 @@ const api = (baseUrl, header = {}) => {
   return service;
 };
 
+/**
+ * @param {*} obj
+ * @description here we have build header
+ */
 const buildHeader = (obj = {}) => {
   const header = {
     Accept: "application/json",
@@ -21,6 +36,7 @@ const buildHeader = (obj = {}) => {
 
 /**
  * @param {*} response
+ * @description Here we parse response
  */
 
 const parseApiRespnse = (response) => {
@@ -31,6 +47,7 @@ const parseApiRespnse = (response) => {
       /* Ignore */
     }
   }
+  console.log("response", response);
   return response;
 };
 

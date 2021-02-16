@@ -1,3 +1,7 @@
+/**
+ * @author Ankush Chavan
+ * @description This is main root file of app
+ */
 import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
