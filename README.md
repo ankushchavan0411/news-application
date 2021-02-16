@@ -28,7 +28,7 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 ## Backend API
 
 For backend API we have use [https://newsapi.org](https:newsapi.org).\
-You can register here [https://newsapi.org](https://newsapi.org) to use their API.\
+You can register here [https://newsapi.org](https://newsapi.org) to use their API.
 
 
 **Note: Genrate your API Key and update in `env`, file!**
