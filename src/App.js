@@ -1,9 +1,10 @@
-
+import Layout from "./components/Layout";
+import NewsList from "./components/NewsList";
 function App() {
   return (
-    <div className="App">
-      hello
-    </div>
+      <Layout>
+        <NewsList />
+      </Layout>
   );
 }
 

@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export default (baseUrl, header = {}) => {
+const api = (baseUrl, header = {}) => {
   const service = axios.create({
     timeout: 120000,
     baseURL: baseUrl,
@@ -16,7 +16,7 @@ const buildHeader = (obj = {}) => {
     "Content-Type": "application/json",
   };
   Object.assign(header, obj);
-  return headerl;
+  return header;
 };
 
 /**
@@ -33,3 +33,5 @@ const parseApiRespnse = (response) => {
   }
   return response;
 };
+
+export default api;
