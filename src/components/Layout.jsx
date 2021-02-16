@@ -4,8 +4,9 @@
  */
 
 import React from "react";
-import { Layout, Menu, Breadcrumb } from "antd";
+import { Layout, Menu, Breadcrumb, Space } from "antd";
 import Alert from "./Alert";
+import { Search } from "./Search";
 import { footerText } from "../config";
 
 const { Header, Content, Footer } = Layout;
@@ -23,11 +24,14 @@ export default ({ children }) => (
       className="site-layout"
       style={{ padding: "0 50px", marginTop: 64 }}
     >
-      <Breadcrumb style={{ margin: "16px 0" }}>
-        <Breadcrumb.Item>Home</Breadcrumb.Item>
-        <Breadcrumb.Item>News</Breadcrumb.Item>
-        <Breadcrumb.Item>Top Heading</Breadcrumb.Item>
-      </Breadcrumb>
+      <Space size={500}>
+        <Breadcrumb style={{ margin: "16px 0" }}>
+          <Breadcrumb.Item>Home</Breadcrumb.Item>
+          <Breadcrumb.Item>News</Breadcrumb.Item>
+          <Breadcrumb.Item>Top Heading</Breadcrumb.Item>
+        </Breadcrumb>
+        <Search />
+      </Space>
       <Alert />
       <div
         className="site-layout-background"

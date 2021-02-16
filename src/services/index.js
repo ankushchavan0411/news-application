@@ -11,5 +11,5 @@ import { topHeadlines } from "../lib/endPoint";
  * @param {*} payload
  * @description Get News List Service
  */
-export const getNews = ({ category }) =>
-  api(baseUrl).get(`${topHeadlines}&category=${category}`);
+export const getNews = ({ category = "", value = "" }) =>
+  api(baseUrl).get(`${topHeadlines}&category=${category}&q=${value}`);
