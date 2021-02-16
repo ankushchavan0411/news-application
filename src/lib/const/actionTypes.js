@@ -10,5 +10,6 @@ export const ALERT_SUCCESS = "ALERT_SUCCESS";
 export const ALERT_INFO = "ALERT_INFO";
 export const ALERT_WARNING = "ALERT_WARNING";
 export const ALERT_FAIL = "ALERT_FAIL";
+export const ALERT_CLEAR = "ALERT_CLEAR";
 
 export const GET_NEWS_SUCCESS = "GET_NEWS_SUCCESS";

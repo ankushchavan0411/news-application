@@ -47,7 +47,7 @@ const parseApiRespnse = (response) => {
       /* Ignore */
     }
   }
-  console.log("response", response);
+  // console.log("response", response);
   return response;
 };
 

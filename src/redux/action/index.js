@@ -11,6 +11,7 @@ import { errorHandler } from "../../util/helper";
  */
 export const getNews = (payload) => {
   return (dispatch) => {
+    dispatch(alertClear());
     dispatch({ type: actionTypes.LOADING_STARTED });
     return services
       .getNews(payload)
@@ -28,5 +29,14 @@ export const getNews = (payload) => {
           payload: errorHandler(err),
         });
       });
+  };
+};
+
+/**
+ * @description alertClear is used to clear type and message
+ */
+export const alertClear = () => {
+  return (dispatch) => {
+    dispatch({ type: actionTypes.ALERT_CLEAR });
   };
 };

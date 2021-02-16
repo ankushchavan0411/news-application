@@ -41,6 +41,12 @@ const news = (state = initialState, action) => {
         type: "error",
         message: payload,
       };
+    case actionType.ALERT_CLEAR:
+      return {
+        ...state,
+        type: "",
+        message: "",
+      };
     default:
       return state;
   }
