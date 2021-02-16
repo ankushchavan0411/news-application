@@ -4,10 +4,13 @@
  */
 import Layout from "./components/Layout";
 import NewsList from "./components/NewsList";
+import Loader from "./components/Loader";
 function App() {
   return (
     <Layout>
-      <NewsList />
+      <Loader>
+        <NewsList />
+      </Loader>
     </Layout>
   );
 }

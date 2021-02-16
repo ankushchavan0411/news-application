@@ -1,12 +1,12 @@
 /**
  * @author Ankush Chavan
- * @description This is our news reducer
+ * @description This is our loader reducer
  */
 
 import * as actionType from "../../lib/const/actionTypes";
 
 const initialState = {
-  newsList: [],
+  loading: false,
 };
 
 /**
@@ -14,13 +14,17 @@ const initialState = {
  * @param {*} action
  */
 const news = (state = initialState, action) => {
-  const { type, payload } = action;
+  const { type } = action;
   switch (type) {
-    case actionType.GET_NEWS_SUCCESS:
+    case actionType.LOADING_STARTED:
       return {
         ...state,
-        isLoading: false,
-        newsList: payload,
+        loading: true,
+      };
+    case actionType.LOADING_STOP:
+      return {
+        ...state,
+        loading: false,
       };
     default:
       return state;

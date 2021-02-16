@@ -1,18 +1,29 @@
+/**
+ * @author Ankush Chavan
+ * @description This is our news actions
+ */
 import * as services from "../../services";
 import * as actionTypes from "../../lib/const/actionTypes";
+import { errorHandler } from "../../util/helper";
 
-const getNews = (payload) => {
+/**
+ * @param {*} payload
+ */
+export const getNews = (payload) => {
   return (dispatch) => {
-    dispatch({ type: actionTypes.GET_NEWS_STARTED });
-    // Return promise with success and failure actions
+    dispatch({ type: actionTypes.LOADING_STARTED });
     return services
       .getNews(payload)
-      .then(
-        (res) => dispatch({ type: actionTypes.GET_NEWS_SUCCESS, payload: res })
-        // err => dispatch({ type: GET_CURRENT_USER_FAILURE, err })
-      )
-      .catch((err) =>
-        dispatch({ type: actionTypes.GET_NEWS_FAIL, payload: err })
-      );
+      .then((res) => {
+        dispatch({ type: actionTypes.LOADING_STOP });
+        dispatch({ type: actionTypes.GET_NEWS_SUCCESS, payload: res });
+      })
+      .catch((err) => {
+        dispatch({ type: actionTypes.LOADING_STOP });
+        dispatch({
+          type: actionTypes.ALERT_FAIL,
+          payload: errorHandler(err),
+        });
+      });
   };
 };
